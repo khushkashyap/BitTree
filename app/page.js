@@ -35,7 +35,7 @@ export default function Home() {
               onClick={() => createTree()}
               className="bg-[#e9c0e9] rounded-full px-12 py-4 font-semibold"
             >
-              Claim your Bittree
+              Create your Bittree
             </button>
           </div>
         </div>
