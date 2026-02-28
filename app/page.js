@@ -14,6 +14,11 @@ export default function Home() {
     <main>
       <section className="bg-[#254f1a] min-h-[126vh] grid grid-cols-2">
         <div className="flex justify-center flex-col ml-[5vw] gap-6">
+          <div className="mb-2 inline-block">
+            <span className="px-4 py-1.5 bg-green-700 border border-green-600/50 rounded-full text-[#d2e823] text-sm font-medium">
+              For Developers. By Developers.
+            </span>
+          </div>
           <h1 className="text-[#d2e823] font-extrabold text-7xl">
             Everything you are. In one, simple link in bio.
           </h1>
