@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { TemplatePreviewCard } from '@/components/TemplatePreview';
 
 const Generate = () => {
   const searchParams = useSearchParams();
@@ -196,13 +197,17 @@ const Generate = () => {
         </div>
       </div>
 
-      {/* RIGHT PROMO */}
-      <div className="hidden lg:block relative h-screen w-full overflow-hidden">
-        <img
-          src="/generate.png"
-          alt="preview"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+      {/* RIGHT PROMO/PREVIEW */}
+      <div className="hidden lg:block relative h-screen w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 p-8">
+        <div className="h-full w-full flex flex-col">
+          <div className="mb-6">
+            <h3 className="text-lg font-bold text-gray-900">Live Preview</h3>
+            <p className="text-sm text-gray-600">Selected: {templates.find(t => t.id === selectedTemplate)?.name}</p>
+          </div>
+          <div className="flex-1 overflow-hidden border border-gray-200 rounded-2xl bg-white shadow-lg">
+            <TemplatePreviewCard templateId={selectedTemplate} size="large" />
+          </div>
+        </div>
       </div>
 
       <ToastContainer />

@@ -19,7 +19,7 @@ export default function DiscoverPage() {
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+          <h1 className="text-5xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
             One Link.
             <br />
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
@@ -27,20 +27,20 @@ export default function DiscoverPage() {
             </span>
           </h1>
 
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12">
+          <p className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12">
             Your portfolio, GitHub, projects, resume, and every link developers need to know about you. One powerful link in bio.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-4">
             <a
               href="/generate"
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
             >
               Create Your Link
             </a>
             <a
               href="#features"
-              className="px-8 py-4 border border-gray-600 rounded-lg font-semibold text-lg hover:border-purple-400 hover:text-purple-400 transition-all duration-300"
+              className="px-8 py-4 backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl font-semibold text-lg hover:bg-white/15 hover:border-white/30 hover:text-white transition-all duration-300"
             >
               See Examples
             </a>
@@ -108,7 +108,7 @@ export default function DiscoverPage() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="group p-6 rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-950 hover:border-purple-500/50 hover:bg-gradient-to-br hover:from-purple-950/30 hover:to-gray-950 transition-all duration-300"
+                className="group p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-[1.02]"
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
@@ -116,7 +116,7 @@ export default function DiscoverPage() {
                 <h3 className="text-xl font-bold mb-2 text-white">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-white/70 text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -131,28 +131,28 @@ export default function DiscoverPage() {
           <h2 className="text-5xl font-black text-center mb-6">
             What Your Link Looks Like
           </h2>
-          <p className="text-gray-400 text-center mb-16 text-lg">
+          <p className="text-white/70 text-center mb-16 text-lg">
             Beautiful, fast, and fully customizable. No two BitTrees look the same.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Preview Card 1 */}
-            <div className="border border-gray-800 rounded-2xl p-8 bg-gradient-to-b from-gray-900 to-gray-950">
+            <div className="rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-lg">
               <div className="text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">@developer</h3>
-                <p className="text-gray-400 text-sm mb-6">Full Stack Developer</p>
+                <p className="text-white/70 text-sm mb-6">Full Stack Developer</p>
                 <div className="space-y-3">
-                  <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-semibold text-sm">
+                  <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold text-sm hover:scale-105 transition-all duration-300">
                     My Portfolio
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-purple-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     GitHub
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-purple-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     Resume
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-purple-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     Contact
                   </button>
                 </div>
@@ -160,22 +160,22 @@ export default function DiscoverPage() {
             </div>
 
             {/* Preview Card 2 */}
-            <div className="border border-gray-800 rounded-2xl p-8 bg-gradient-to-b from-gray-900 to-gray-950">
+            <div className="rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-lg">
               <div className="text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">@techentrepreneur</h3>
-                <p className="text-gray-400 text-sm mb-6">Building the future</p>
+                <p className="text-white/70 text-sm mb-6">Building the future</p>
                 <div className="space-y-3">
-                  <button className="w-full px-4 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg text-white font-semibold text-sm">
+                  <button className="w-full px-4 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full text-white font-semibold text-sm hover:scale-105 transition-all duration-300">
                     My Projects
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-blue-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     Twitter
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-blue-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     LinkedIn
                   </button>
-                  <button className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white font-semibold text-sm hover:border-blue-500">
+                  <button className="w-full px-4 py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
                     Newsletter
                   </button>
                 </div>
@@ -224,13 +224,13 @@ export default function DiscoverPage() {
             Ready to Share Your<br />
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">Developer Story?</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg mb-12 max-w-2xl mx-auto">
             Join 50K+ developers who've already made their mark with BitTree.
           </p>
 
           <a
             href="/generate"
-            className="inline-flex px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+            className="inline-flex px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
           >
             Get Your Link Now
           </a>

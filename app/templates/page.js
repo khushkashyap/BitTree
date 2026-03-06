@@ -17,6 +17,7 @@ import {
   Wand2,
   X,
 } from 'lucide-react';
+import { TemplatePreviewCard, TemplatePreviewModal } from '@/components/TemplatePreview';
 
 const templates = [
   {
@@ -106,7 +107,7 @@ function TemplateCard({ template, onPreview }) {
     <motion.div
       layout
       whileHover={{ y: -6 }}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl"
+      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl flex flex-col"
     >
       <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <div
@@ -114,7 +115,13 @@ function TemplateCard({ template, onPreview }) {
         />
       </div>
 
-      <div className="relative p-6">
+      {/* Template Preview - Mini version */}
+      <div className="relative h-48 overflow-hidden bg-gradient-to-b from-white/5 to-transparent border-b border-white/10">
+        <TemplatePreviewCard templateId={template.id} size="small" />
+      </div>
+
+      {/* Template Info */}
+      <div className="relative p-6 flex-1 flex flex-col">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/5">
@@ -140,7 +147,7 @@ function TemplateCard({ template, onPreview }) {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-3">
+        <div className="mt-6 grid gap-3 pt-4 border-t border-white/5">
           <button
             className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-3 text-sm font-bold text-black transition-transform hover:scale-[1.02] active:scale-[0.98]"
             onClick={onPreview}
@@ -171,48 +178,65 @@ function PreviewModal({ activeTemplate, onClose }) {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="relative w-full max-w-lg overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0d1117] p-8 shadow-3xl"
+        className="relative w-full max-w-2xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0d1117] shadow-3xl max-h-[90vh] overflow-y-auto"
       >
         <button
           onClick={onClose}
-          className="absolute right-6 top-6 rounded-full bg-white/5 p-2 text-white/60 hover:text-white transition-colors"
+          className="absolute right-6 top-6 rounded-full bg-white/5 p-2 text-white/60 hover:text-white transition-colors z-10 backdrop-blur-sm"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <div className="text-center">
-          <div
-            className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-gradient-to-tr ${activeTemplate.accent} shadow-lg shadow-white/5`}
-          >
-            <activeTemplate.icon className="h-10 w-10 text-white" />
+        {/* Template Preview - Full view */}
+        <div className="w-full h-80 overflow-hidden bg-dark">
+          <TemplatePreviewModal templateId={activeTemplate.id} />
+        </div>
+
+        {/* Template Info */}
+        <div className="p-8">
+          <div className="text-center mb-8">
+            <div
+              className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-gradient-to-tr ${activeTemplate.accent} shadow-lg shadow-white/5`}
+            >
+              <activeTemplate.icon className="h-10 w-10 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-white">
+              {activeTemplate.name}
+            </h2>
+            <p className="mt-3 text-white/60">{activeTemplate.desc}</p>
           </div>
-          <h2 className="text-2xl font-bold text-white">
-            @{activeTemplate.name}
-          </h2>
-          <p className="mt-2 text-white/60">{activeTemplate.desc}</p>
-        </div>
 
-        <div className="mt-8 space-y-3">
-          {['My Portfolio', 'Latest Projects', 'Contact Me', 'Newsletter'].map(
-            (link) => (
+          {/* Features */}
+          <div className="mb-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+            {activeTemplate.tags.map((tag) => (
               <div
-                key={link}
-                className="w-full rounded-2xl border border-white/5 bg-white/5 py-4 text-center font-medium text-white shadow-sm"
+                key={tag}
+                className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-center text-sm font-medium text-white/80"
               >
-                {link}
+                {tag}
               </div>
-            ),
-          )}
-        </div>
+            ))}
+          </div>
 
-        <button
-          onClick={() => {
-            router.push(`/generate?template=${activeTemplate.id}`);
-          }}
-          className="mt-8 w-full rounded-2xl bg-white py-4 text-sm font-bold text-black shadow-xl hover:opacity-90 transition-opacity"
-        >
-          Use This Template
-        </button>
+          {/* CTA Buttons */}
+          <div className="space-y-3 mt-8">
+            <button
+              onClick={() => {
+                router.push(`/generate?template=${activeTemplate.id}`);
+                onClose();
+              }}
+              className="w-full rounded-2xl bg-white py-4 text-sm font-bold text-black shadow-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+            >
+              Use This Template <ArrowRight className="h-4 w-4" />
+            </button>
+            <button
+              onClick={onClose}
+              className="w-full rounded-2xl border border-white/20 bg-white/5 py-4 text-sm font-bold text-white hover:bg-white/10 transition-colors"
+            >
+              Back to Templates
+            </button>
+          </div>
+        </div>
       </motion.div>
     </div>
   );

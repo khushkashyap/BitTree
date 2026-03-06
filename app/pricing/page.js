@@ -21,10 +21,10 @@ export default function Pricing() {
       ],
       highlighted: false,
       buttonText: 'Get Started',
-      color: 'bg-[#254f1a]',
-      textColor: 'text-[#d2e823]',
-      buttonBg: 'bg-[#e9c0e9]',
-      buttonText_color: 'text-[#502274]',
+      color: 'bg-[#d2e823]',
+      textColor: 'text-black',
+      buttonBg: 'bg-[#254f1a]',
+      buttonText_color: 'text-white',
     },
     {
       name: 'Professional',
@@ -79,27 +79,27 @@ export default function Pricing() {
   return (
     <main>
       {/* Header Section */}
-      <section className="bg-[#254f1a] min-h-[80vh] flex flex-col justify-center items-center text-center px-8">
+      <section className="bg-[#f3f3f1] min-h-[80vh] flex flex-col justify-center items-center text-center px-8">
         <div className="mb-4 inline-block mt-16">
-          <span className="px-4 py-1.5 bg-green-700 border border-green-600/50 rounded-full text-[#d2e823] text-sm font-medium">
+          <span className="px-4 py-2 bg-black rounded-full text-white text-sm font-medium">
             Simple, Transparent Pricing
           </span>
         </div>
-        <h1 className="text-[#d2e823] font-extrabold text-6xl md:text-7xl mb-6 max-w-4xl">
+        <h1 className="text-black font-extrabold text-6xl md:text-7xl mb-6 max-w-4xl">
           Choose Your Perfect Plan
         </h1>
-        <p className="text-[#d2e823] text-xl max-w-2xl mb-10">
+        <p className="text-black text-xl max-w-2xl mb-10">
           Pick the plan that fits your needs and start building your developer profile today
         </p>
 
         {/* Billing Toggle */}
-        <div className="flex items-center gap-4 bg-green-900/30 border border-green-600/50 rounded-full px-2 py-2">
+        <div className="flex items-center gap-4 bg-white px-6 py-2 rounded-full">
           <button
             onClick={() => setBillingCycle('monthly')}
             className={`px-6 py-2 rounded-full font-semibold transition-all ${
               billingCycle === 'monthly'
-                ? 'bg-[#d2e823] text-[#254f1a]'
-                : 'text-[#d2e823]'
+                ? 'bg-black text-white'
+                : 'text-black'
             }`}
           >
             Monthly
@@ -108,18 +108,17 @@ export default function Pricing() {
             onClick={() => setBillingCycle('yearly')}
             className={`px-6 py-2 rounded-full font-semibold transition-all ${
               billingCycle === 'yearly'
-                ? 'bg-[#d2e823] text-[#254f1a]'
-                : 'text-[#d2e823]'
+                ? 'bg-black text-white'
+                : 'text-black'
             }`}
           >
-            Yearly
-            <span className="ml-2 text-sm bg-green-700 px-2 py-1 rounded-full">Save 25%</span>
+            Yearly (save up to 25%)
           </button>
         </div>
       </section>
 
       {/* Pricing Cards Section */}
-      <section className="bg-[#e9c0e9] min-h-screen flex flex-col justify-center items-center py-20 px-8">
+      <section className="bg-[#f3f3f1] min-h-screen flex flex-col justify-center items-center py-20 px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full">
           {plans.map((plan, index) => (
             <div
