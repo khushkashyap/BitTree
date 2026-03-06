@@ -13,7 +13,7 @@ import {
 
 export default function Navbar() {
   const pathname = usePathname();
-  const showNavbar = ['/', '/discover', '/templates'].includes(pathname);
+  const showNavbar = ['/', '/discover', '/templates', '/pricing'].includes(pathname);
 
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
