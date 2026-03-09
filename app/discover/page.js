@@ -1,5 +1,10 @@
 'use client';
-import { FaBoltLightning, FaLaptop, FaAffiliatetheme, FaPaperPlane } from 'react-icons/fa6';
+import {
+  FaBoltLightning,
+  FaLaptop,
+  FaAffiliatetheme,
+  FaPaperPlane,
+} from 'react-icons/fa6';
 import { TbBrandGoogleAnalytics } from 'react-icons/tb';
 import { PiSecurityCameraFill } from 'react-icons/pi';
 
@@ -28,7 +33,8 @@ export default function DiscoverPage() {
           </h1>
 
           <p className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-12">
-            Your portfolio, GitHub, projects, resume, and every link developers need to know about you. One powerful link in bio.
+            Your portfolio, GitHub, projects, resume, and every link developers
+            need to know about you. One powerful link in bio.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-4">
@@ -49,15 +55,21 @@ export default function DiscoverPage() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div>
-              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">50K+</div>
+              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+                50K+
+              </div>
               <div className="text-gray-500 text-sm">Developers</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">2M+</div>
+              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+                2M+
+              </div>
               <div className="text-gray-500 text-sm">Links Shared</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">99.9%</div>
+              <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+                99.9%
+              </div>
               <div className="text-gray-500 text-sm">Uptime</div>
             </div>
           </div>
@@ -70,7 +82,10 @@ export default function DiscoverPage() {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <h2 className="text-5xl font-black text-center mb-20">
-            Built for Modern <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Developers</span>
+            Built for Modern{' '}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Developers
+            </span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -132,7 +147,8 @@ export default function DiscoverPage() {
             What Your Link Looks Like
           </h2>
           <p className="text-white/70 text-center mb-16 text-lg">
-            Beautiful, fast, and fully customizable. No two BitTrees look the same.
+            Beautiful, fast, and fully customizable. No two BitTrees look the
+            same.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -141,7 +157,9 @@ export default function DiscoverPage() {
               <div className="text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">@developer</h3>
-                <p className="text-white/70 text-sm mb-6">Full Stack Developer</p>
+                <p className="text-white/70 text-sm mb-6">
+                  Full Stack Developer
+                </p>
                 <div className="space-y-3">
                   <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold text-sm hover:scale-105 transition-all duration-300">
                     My Portfolio
@@ -164,7 +182,9 @@ export default function DiscoverPage() {
               <div className="text-center">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">@techentrepreneur</h3>
-                <p className="text-white/70 text-sm mb-6">Building the future</p>
+                <p className="text-white/70 text-sm mb-6">
+                  Building the future
+                </p>
                 <div className="space-y-3">
                   <button className="w-full px-4 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full text-white font-semibold text-sm hover:scale-105 transition-all duration-300">
                     My Projects
@@ -191,15 +211,34 @@ export default function DiscoverPage() {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <h2 className="text-5xl font-black text-center mb-20">
-            Why Developers Choose <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">BitTree</span>
+            Why Developers Choose{' '}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              BitTree
+            </span>
           </h2>
 
           <div className="space-y-6 max-w-3xl mx-auto">
             {[
-              { num: '01', title: 'No Friction Setup', desc: 'Create your link in 30 seconds. Seriously.' },
-              { num: '02', title: 'Works Everywhere', desc: 'Twitter bio, LinkedIn, Discord, emails, resumes - wherever you need it.' },
-              { num: '03', title: 'Brand Yourself', desc: 'Use our themes or customize everything with your own CSS.' },
-              { num: '04', title: 'Keep Control', desc: 'Own your data. Download it anytime. No lock-in.' },
+              {
+                num: '01',
+                title: 'No Friction Setup',
+                desc: 'Create your link in 30 seconds. Seriously.',
+              },
+              {
+                num: '02',
+                title: 'Works Everywhere',
+                desc: 'Twitter bio, LinkedIn, Discord, emails, resumes - wherever you need it.',
+              },
+              {
+                num: '03',
+                title: 'Brand Yourself',
+                desc: 'Use our themes or customize everything with your own CSS.',
+              },
+              {
+                num: '04',
+                title: 'Keep Control',
+                desc: 'Own your data. Download it anytime. No lock-in.',
+              },
             ].map((item, idx) => (
               <div key={idx} className="flex gap-6 items-start">
                 <div className="text-3xl font-black text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
@@ -221,8 +260,11 @@ export default function DiscoverPage() {
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl md:text-6xl font-black mb-6">
-            Ready to Share Your<br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">Developer Story?</span>
+            Ready to Share Your
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Developer Story?
+            </span>
           </h2>
           <p className="text-white/70 text-lg mb-12 max-w-2xl mx-auto">
             Join 50K+ developers who've already made their mark with BitTree.
@@ -235,6 +277,7 @@ export default function DiscoverPage() {
             Get Your Link Now
           </a>
         </div>
+          <p className='mt-20 -mb-10 text-center text-sm bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent'>&copy; 2026 Bittree. Built for developers.</p>
       </section>
     </main>
   );

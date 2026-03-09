@@ -1,14 +1,20 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { SignInButton } from '@clerk/nextjs';
+import { SignInButton, useAuth } from '@clerk/nextjs';
 
 export default function Home() {
   const router = useRouter();
+  const { isSignedIn } = useAuth();
+  const [text, setText] = useState('');
+
   const createTree = () => {
+    if (!isSignedIn) {
+      // Don't navigate if not signed in - let SignInButton handle it
+      return;
+    }
     router.push(`/generate?handle=${text}`);
   };
-  const [text, setText] = useState('');
 
   return (
     <main>
@@ -36,12 +42,20 @@ export default function Home() {
               type="text"
               placeholder="Enter your Handle"
             />
-            <button
-              onClick={() => createTree()}
-              className="bg-[#e9c0e9] rounded-full px-12 py-4 font-semibold"
-            >
-              Create your Bittree
-            </button>
+            {isSignedIn ? (
+              <button
+                onClick={() => createTree()}
+                className="bg-[#e9c0e9] rounded-full px-12 py-4 font-semibold"
+              >
+                Create your Bittree
+              </button>
+            ) : (
+              <SignInButton forceRedirectUrl={`/generate?handle=${text}`}>
+                <button className="bg-[#e9c0e9] rounded-full px-12 py-4 font-semibold">
+                  Create your Bittree
+                </button>
+              </SignInButton>
+            )}
           </div>
         </div>
         <div className="flex items-center justify-center flex-col mr-[8vw]">
@@ -65,9 +79,8 @@ export default function Home() {
             work and presence online.
           </p>
           <div className="input flex gap-2 pt-10">
-            <SignInButton>
+            <SignInButton forceRedirectUrl="/dashboard">
               <button
-                onClick={() => createTree()}
                 className="bg-[#502274] text-white rounded-full px-10 py-4 font-semibold"
               >
                 Get started for free

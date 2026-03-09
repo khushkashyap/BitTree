@@ -1,7 +1,19 @@
 import clientPromise from "@/lib/mongodb";
+import { auth } from "@clerk/nextjs/server";
 
 export async function POST(request) {
+    const { userId: clerkUserId } = await auth();
     const body = await request.json();
+
+    // Verify user is authenticated
+    if (!clerkUserId) {
+        return Response.json({
+            success: false,
+            error: true,
+            message: "Unauthorized: Please sign in first",
+            result: null
+        }, { status: 401 });
+    }
 
     if (!body.handle || !body.template) {
         return Response.json({
@@ -29,7 +41,7 @@ export async function POST(request) {
         });
     }
 
-    const { links, pic, desc, template } = body;
+    const { links, pic, desc, template, userId } = body;
 
     const result = await collection.insertOne({
         handle: normalizedHandle,
@@ -37,6 +49,7 @@ export async function POST(request) {
         pic,
         desc,
         template,
+        userId: clerkUserId,
         createdAt: new Date()
     });
 

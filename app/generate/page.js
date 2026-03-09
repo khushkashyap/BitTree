@@ -5,16 +5,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useUser, useAuth } from '@clerk/nextjs';
 import { TemplatePreviewCard } from '@/components/TemplatePreview';
 
 const Generate = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { user, isLoaded } = useUser();
+  const { isSignedIn } = useAuth();
   const [links, setLinks] = useState([{ link: '', linktext: '' }]);
   const [handle, sethandle] = useState(searchParams.get('handle') || '');
   const [pic, setpic] = useState('');
   const [desc, setdesc] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState('minimal');
+
+  // Redirect to sign-in if not authenticated
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push('/');
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   useEffect(() => {
     const templateFromUrl = searchParams.get('template');
@@ -46,34 +56,44 @@ const Generate = () => {
   const submitLinks = async () => {
     const currentHandle = handle; // store before reset
 
-    const r = await fetch('http://localhost:3000/api/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        links,
-        handle,
-        pic,
-        desc,
-        template: selectedTemplate,
-      }),
-    });
+    try {
+      const r = await fetch('http://localhost:3000/api/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          links,
+          handle,
+          pic,
+          desc,
+          template: selectedTemplate,
+          userId: user?.id,
+        }),
+      });
 
-    const result = await r.json();
+      if (!r.ok) {
+        throw new Error(`HTTP error! status: ${r.status}`);
+      }
 
-    if (result.success) {
-      toast.success(result.message);
+      const result = await r.json();
 
-      // Reset form
-      sethandle('');
-      setpic('');
-      setdesc('');
-      setLinks([{ link: '', linktext: '' }]);
-      setSelectedTemplate('minimal');
+      if (result.success) {
+        toast.success(result.message);
 
-      // Redirect
-      router.push(`/${currentHandle.toLowerCase()}`);
-    } else {
-      toast.error(result.message);
+        // Reset form
+        sethandle('');
+        setpic('');
+        setdesc('');
+        setLinks([{ link: '', linktext: '' }]);
+        setSelectedTemplate('minimal');
+
+        // Redirect
+        router.push(`/${currentHandle.toLowerCase()}`);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      console.error('Error submitting links:', error);
+      toast.error('Failed to save your BitTree. Please try again.');
     }
   };
 

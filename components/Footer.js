@@ -50,7 +50,13 @@ const Footer = () => {
 
           {/* Bittree Branding */}
           <div className="w-[90%] md:w-[80%] mx-auto h-40 flex justify-center items-center text-[#502274] font-bold bg-[#e9c0e9] mt-14 text-4xl md:text-6xl lg:text-8xl rounded-3xl">
-            <Image src="/app-logo-2.png" width={440} height={300} alt="logo" />
+            <Image
+              src="/app-logo-2.png"
+              width={440}
+              height={300}
+              style={{ width: 'auto', height: 'auto' }}
+              alt="logo"
+            />
           </div>
 
           {/* Copyright Text */}

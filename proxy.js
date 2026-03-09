@@ -1,6 +1,25 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, auth } from '@clerk/nextjs/server';
 
-export default clerkMiddleware();
+export default clerkMiddleware(async (auth, request) => {
+  const pathname = request.nextUrl.pathname;
+
+  // Protected routes that require authentication
+  const protectedRoutes = [
+    '/dashboard',
+    '/generate',
+    '/edit',
+  ];
+
+  // Check if the current path is a protected route
+  const isProtected = protectedRoutes.some(route =>
+    pathname === route || pathname.startsWith(route + '/')
+  );
+
+  // Use Clerk's built-in auth protection for protected routes
+  if (isProtected) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [

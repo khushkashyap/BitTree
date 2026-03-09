@@ -3,17 +3,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  SignUpButton,
-} from '@clerk/nextjs';
+import { SignInButton, SignedOut, SignUpButton, SignedIn } from '@clerk/nextjs';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const showNavbar = ['/', '/discover', '/templates', '/pricing'].includes(pathname);
+  const showNavbar = ['/', '/discover', '/templates', '/pricing'].includes(
+    pathname,
+  );
 
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -49,18 +45,46 @@ export default function Navbar() {
       <div className="flex justify-between items-center p-4 px-7">
         {/* LEFT */}
         <div className="flex gap-20 items-center px-4">
-          <Link href="/">
-            <Image src="/app-logo.png" width={150} height={150} alt="logo" />
-          </Link>
+          <SignedOut>
+            <Link href="/">
+              <Image
+                src="/app-logo.png"
+                width={150}
+                height={150}
+                style={{ width: 'auto', height: 'auto' }}
+                alt="logo"
+              />
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link href="/dashboard">
+              <Image
+                src="/app-logo.png"
+                width={150}
+                height={150}
+                style={{ width: 'auto', height: 'auto' }}
+                alt="logo"
+              />
+            </Link>
+          </SignedIn>
 
           <ul className="flex gap-1">
-            <Link href="/templates" className="hover:bg-gray-200 p-4 py-2 rounded-lg">
+            <Link
+              href="/templates"
+              className="hover:bg-gray-200 p-4 py-2 rounded-lg"
+            >
               <li>Templates</li>
             </Link>
-            <Link href="/discover" className="hover:bg-gray-200 p-4 py-2 rounded-lg">
+            <Link
+              href="/discover"
+              className="hover:bg-gray-200 p-4 py-2 rounded-lg"
+            >
               <li>Discover</li>
             </Link>
-            <Link href="/pricing" className="hover:bg-gray-200 p-4 py-2 rounded-lg">
+            <Link
+              href="/pricing"
+              className="hover:bg-gray-200 p-4 py-2 rounded-lg"
+            >
               <li>Pricing</li>
             </Link>
           </ul>
@@ -68,23 +92,27 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="flex gap-2 items-center">
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-
           <SignedOut>
-            <SignInButton>
+            <SignInButton forceRedirectUrl="/dashboard">
               <button className="bg-gray-200 px-6 py-3 rounded-lg font-medium">
                 Log in
               </button>
             </SignInButton>
 
-            <SignUpButton>
+            <SignUpButton forceRedirectUrl="/dashboard">
               <button className="bg-gray-800 text-white px-8 py-3 font-bold rounded-full">
                 Sign up free
               </button>
             </SignUpButton>
           </SignedOut>
+
+          <SignedIn>
+            <Link href="/dashboard">
+              <button className="bg-zinc-800 text-white px-6 py-3 font-bold rounded-full hover:shadow-lg hover:shadow-zinc-500 transition-all duration-300">
+                Dashboard
+              </button>
+            </Link>
+          </SignedIn>
         </div>
       </div>
     </nav>
