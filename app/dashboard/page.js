@@ -4,6 +4,7 @@ import React from 'react';
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { UserButton } from '@clerk/nextjs';
 import clientPromise from '@/lib/mongodb';
 import { Eye, Edit2, Trash2, Plus } from 'lucide-react';
@@ -31,69 +32,70 @@ export default async function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-black">
       {/* Navigation */}
       <nav className="border-b border-white/10 bg-black/50 backdrop-blur-xl sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/app-logo-2.png" alt="BitTree" className="h-8 w-auto" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Image src="/app-logo-2.png" alt="BitTree" width={32} height={32} className="h-6 sm:h-8 w-auto" />
           </Link>
-          <div className="text-white/70 text-sm">My BitTrees</div>
+          <div className="text-white/70 text-xs sm:text-sm hidden sm:block">My BitTrees</div>
           <UserButton />
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Back to site link */}
-        <div className="mb-8">
-          <Link href="/" className="text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-1 transition-colors">
+        <div className="mb-6 sm:mb-8">
+          <Link href="/" className="text-blue-400 hover:text-blue-300 text-xs sm:text-sm font-medium flex items-center gap-1 transition-colors">
             ← Back to site
           </Link>
         </div>
 
         {/* Header */}
-        <div className="mb-12 flex items-center justify-between">
+        <div className="mb-8 sm:mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-1 sm:mb-2">
               My BitTrees
             </h1>
-            <p className="text-white/60">Manage and organize your link profiles</p>
+            <p className="text-white/60 text-xs sm:text-sm md:text-base">Manage and organize your link profiles</p>
           </div>
           <Link
             href="/generate"
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 font-semibold"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 font-semibold text-xs sm:text-sm whitespace-nowrap"
           >
-            <Plus size={20} />
-            Create New
+            <Plus size={16} className="sm:w-5 sm:h-5" />
+            <span className="hidden sm:inline">Create New</span>
+            <span className="sm:hidden">Create</span>
           </Link>
         </div>
 
         {/* BitTrees Grid */}
         {profiles.length === 0 ? (
-          <div className="text-center py-16">
+          <div className="text-center py-12 sm:py-16">
             <div className="mb-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10">
-                <Plus size={32} className="text-white/40" />
+              <div className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-white/5 border border-white/10">
+                <Plus size={24} className="sm:w-8 sm:h-8 text-white/40" />
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
               No BitTrees yet
             </h3>
-            <p className="text-white/60 mb-6">
+            <p className="text-white/60 mb-4 sm:mb-6 text-sm sm:text-base">
               Create your first BitTree to get started
             </p>
             <Link
               href="/generate"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 font-semibold"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 font-semibold text-xs sm:text-sm"
             >
-              <Plus size={20} />
+              <Plus size={16} className="sm:w-5 sm:h-5" />
               Create BitTree
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {profiles.map((profile) => (
               <div
                 key={profile._id.toString()}
-                className="group rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-6 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 overflow-hidden relative"
+                className="group rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-4 sm:p-6 hover:border-white/20 hover:bg-white/[0.08] transition-all duration-300 overflow-hidden relative"
               >
                 {/* Gradient accent */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

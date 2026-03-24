@@ -79,51 +79,51 @@ export default function Pricing() {
   return (
     <main>
       {/* Header Section */}
-      <section className="bg-[#f3f3f1] min-h-[80vh] flex flex-col justify-center items-center text-center px-8">
-        <div className="mb-4 inline-block mt-16">
-          <span className="px-4 py-2 bg-black rounded-full text-white text-sm font-medium">
+      <section className="bg-[#f3f3f1] min-h-screen md:min-h-[80vh] flex flex-col justify-center items-center text-center px-4 sm:px-8 py-16 md:py-20">
+        <div className="mb-4 inline-block mt-12 md:mt-16">
+          <span className="px-4 py-2 bg-black rounded-full text-white text-xs sm:text-sm font-medium">
             Simple, Transparent Pricing
           </span>
         </div>
-        <h1 className="text-black font-extrabold text-6xl md:text-7xl mb-6 max-w-4xl">
+        <h1 className="text-black font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 max-w-4xl leading-tight">
           Choose Your Perfect Plan
         </h1>
-        <p className="text-black text-xl max-w-2xl mb-10">
+        <p className="text-black text-sm sm:text-base md:text-xl max-w-2xl mb-8 md:mb-10 px-2">
           Pick the plan that fits your needs and start building your developer profile today
         </p>
 
         {/* Billing Toggle */}
-        <div className="flex items-center gap-4 bg-white px-6 py-2 rounded-full">
+        <div className="flex items-center gap-2 sm:gap-4 bg-white px-3 sm:px-6 py-2 rounded-full flex-wrap justify-center">
           <button
             onClick={() => setBillingCycle('monthly')}
-            className={`px-6 py-2 rounded-full font-semibold transition-all ${
+            className={`px-3 sm:px-6 py-2 rounded-full font-semibold transition-all text-xs sm:text-sm ${
               billingCycle === 'monthly'
                 ? 'bg-black text-white'
-                : 'text-black'
+                : 'text-black hover:bg-gray-100'
             }`}
           >
             Monthly
           </button>
           <button
             onClick={() => setBillingCycle('yearly')}
-            className={`px-6 py-2 rounded-full font-semibold transition-all ${
+            className={`px-3 sm:px-6 py-2 rounded-full font-semibold transition-all text-xs sm:text-sm ${
               billingCycle === 'yearly'
                 ? 'bg-black text-white'
-                : 'text-black'
+                : 'text-black hover:bg-gray-100'
             }`}
           >
-            Yearly (save up to 25%)
+            Yearly (save 25%)
           </button>
         </div>
       </section>
 
       {/* Pricing Cards Section */}
-      <section className="bg-[#f3f3f1] min-h-screen flex flex-col justify-center items-center py-20 px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full">
+      <section className="bg-[#f3f3f1] min-h-screen flex flex-col justify-center items-center py-12 md:py-20 px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl w-full">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-2xl p-8 transition-transform hover:scale-105 ${
+              className={`rounded-2xl p-6 md:p-8 transition-transform hover:scale-105 ${
                 plan.highlighted
                   ? `${plan.color} ${plan.textColor} shadow-2xl border-4 border-[#502274]`
                   : `${plan.color} ${plan.textColor} border-2 border-[#502274]/20`
@@ -131,26 +131,26 @@ export default function Pricing() {
             >
               {plan.highlighted && (
                 <div className="text-center mb-4">
-                  <span className="bg-[#d2e823] text-[#502274] px-4 py-1 rounded-full text-sm font-bold">
+                  <span className="bg-[#d2e823] text-[#502274] px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-bold inline-block">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <h2 className="text-3xl font-bold mb-2">{plan.name}</h2>
-              <p className={`mb-6 ${plan.highlighted ? 'opacity-90' : 'opacity-75'}`}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">{plan.name}</h2>
+              <p className={`mb-6 text-sm sm:text-base ${plan.highlighted ? 'opacity-90' : 'opacity-75'}`}>
                 {plan.description}
               </p>
 
               <div className="mb-8">
                 {plan.monthlyPrice === 0 ? (
-                  <p className="text-5xl font-extrabold">Free</p>
+                  <p className="text-4xl sm:text-5xl font-extrabold">Free</p>
                 ) : (
                   <>
-                    <p className="text-5xl font-extrabold">
+                    <p className="text-4xl sm:text-5xl font-extrabold">
                       ${getPrice(plan)}
                     </p>
-                    <p className={`text-sm mt-2 ${plan.highlighted ? 'opacity-90' : 'opacity-75'}`}>
+                    <p className={`text-xs sm:text-sm mt-2 ${plan.highlighted ? 'opacity-90' : 'opacity-75'}`}>
                       per {billingCycle === 'monthly' ? 'month' : 'year'}
                     </p>
                   </>
@@ -159,19 +159,19 @@ export default function Pricing() {
 
               <SignInButton>
                 <button
-                  className={`w-full py-3 px-6 rounded-full font-semibold mb-8 transition-all hover:shadow-lg ${plan.buttonBg} ${plan.buttonText_color}`}
+                  className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-full font-semibold mb-8 transition-all hover:shadow-lg text-sm sm:text-base ${plan.buttonBg} ${plan.buttonText_color}`}
                 >
                   {plan.buttonText}
                 </button>
               </SignInButton>
 
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start gap-3">
-                    <span className={`text-xl font-bold mt-1 ${plan.highlighted ? '' : ''}`}>
+                  <div key={featureIndex} className="flex items-start gap-2 md:gap-3">
+                    <span className={`text-lg md:text-xl font-bold mt-1 flex-shrink-0 ${plan.highlighted ? '' : ''}`}>
                       ✓
                     </span>
-                    <span className={plan.highlighted ? 'opacity-90' : 'opacity-75'}>
+                    <span className={`text-xs sm:text-sm md:text-base ${plan.highlighted ? 'opacity-90' : 'opacity-75'}`}>
                       {feature}
                     </span>
                   </div>
@@ -180,7 +180,7 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-        <div className="mt-16 text-center text-sm text-[#502274]/70">
+        <div className="mt-12 md:mt-16 text-center text-xs sm:text-sm text-[#502274]/70 px-4">
           <p>&copy; 2026 Bittree. Built for developers.</p>
         </div>
       </section>
