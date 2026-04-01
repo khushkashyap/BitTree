@@ -12,12 +12,12 @@ export default function DiscoverPage() {
   return (
     <main className="w-full bg-black text-white overflow-hidden">
       {/* HERO SECTION - GRADIENT BG */}
-      <section className="relative min-h-screen md:min-h-[126vh] flex items-center justify-center overflow-hidden pt-20 md:pt-0">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-black to-black"></div>
-        <div className="absolute top-0 right-0 w-52 sm:w-96 h-52 sm:h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-52 sm:w-96 h-52 sm:h-96 bg-pink-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-40 sm:w-72 md:w-96 h-40 sm:h-72 md:h-96 bg-pink-600/20 rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center z-10">
           <div className="mb-4 sm:mb-6 inline-block">
             <span className="px-3 sm:px-4 py-1.5 bg-purple-950 border border-purple-600/50 rounded-full text-purple-300 text-xs sm:text-sm font-medium">
               For Developers. By Developers.
@@ -40,7 +40,7 @@ export default function DiscoverPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <a
               href="/generate"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-sm sm:text-base lg:text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 text-center"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-sm sm:text-base lg:text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-[1.03] text-center"
             >
               Create Your Link
             </a>
@@ -77,10 +77,10 @@ export default function DiscoverPage() {
       </section>
 
       {/* FEATURES SECTION */}
-      <section id="features" className="py-16 sm:py-24 md:py-32 relative">
+      <section id="features" className="py-16 sm:py-20 md:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent pointer-events-none"></div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-12 sm:mb-16 md:mb-20">
             Built for Modern{' '}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -88,7 +88,7 @@ export default function DiscoverPage() {
             </span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
               {
                 icon: <FaBoltLightning className="w-6 sm:w-8 h-6 sm:h-8" />,
@@ -141,8 +141,8 @@ export default function DiscoverPage() {
       </section>
 
       {/* SHOWCASE SECTION */}
-      <section className="py-16 sm:py-24 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="py-16 sm:py-20 md:py-24 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-4 sm:mb-6">
             What Your Link Looks Like
           </h2>
@@ -150,7 +150,7 @@ export default function DiscoverPage() {
             Beautiful, fast, and fully customizable. No two BitTrees look the same.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {/* Preview Card 1 */}
             <div className="rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 p-6 sm:p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-lg">
               <div className="text-center">
@@ -160,7 +160,7 @@ export default function DiscoverPage() {
                   Full Stack Developer
                 </p>
                 <div className="space-y-2 sm:space-y-3">
-                  <button className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold text-xs sm:text-sm hover:scale-105 transition-all duration-300">
+                  <button className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold text-xs sm:text-sm hover:scale-[1.03] transition-all duration-300">
                     My Portfolio
                   </button>
                   <button className="w-full px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-xs sm:text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
@@ -185,7 +185,7 @@ export default function DiscoverPage() {
                   Building the future
                 </p>
                 <div className="space-y-2 sm:space-y-3">
-                  <button className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full text-white font-semibold text-xs sm:text-sm hover:scale-105 transition-all duration-300">
+                  <button className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full text-white font-semibold text-xs sm:text-sm hover:scale-[1.03] transition-all duration-300">
                     My Projects
                   </button>
                   <button className="w-full px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-sm bg-white/10 border border-white/20 rounded-full text-white font-semibold text-xs sm:text-sm hover:bg-white/15 hover:border-white/30 transition-all duration-300">
@@ -205,10 +205,10 @@ export default function DiscoverPage() {
       </section>
 
       {/* WHY DEVELOPERS CHOOSE US */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-16 sm:py-20 md:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-transparent to-pink-900/20 pointer-events-none"></div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-12 sm:mb-20">
             Why Developers Choose{' '}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -254,10 +254,10 @@ export default function DiscoverPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-16 sm:py-24 relative">
+      <section className="py-16 sm:py-20 md:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent pointer-events-none"></div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             Ready to Share Your
             <br />
@@ -271,12 +271,12 @@ export default function DiscoverPage() {
 
           <a
             href="/generate"
-            className="inline-flex px-6 sm:px-10 py-3 sm:py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold text-sm sm:text-base md:text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+            className="inline-flex px-6 sm:px-10 py-3 sm:py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold text-sm sm:text-base md:text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-[1.03]"
           >
             Get Your Link Now
           </a>
         </div>
-        <p className='mt-12 sm:mt-20 -mb-8 sm:-mb-10 text-center text-xs sm:text-sm bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent px-4'>&copy; 2026 Bittree. Built for developers.</p>
+        <p className='mt-12 sm:mt-20 -mb-6 sm:-mb-8 text-center text-xs sm:text-sm bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent px-4'>&copy; 2026 Bittree. Built for developers.</p>
       </section>
     </main>
   );

@@ -3,7 +3,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { SignInButton, SignedOut, SignUpButton, SignedIn } from '@clerk/nextjs';
+import {
+  SignInButton,
+  SignedOut,
+  SignUpButton,
+  SignedIn,
+  SignOutButton,
+} from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -124,6 +130,11 @@ export default function Navbar() {
             </SignedOut>
 
             <SignedIn>
+              <SignOutButton>
+                <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-bold text-sm hover:shadow-lg hover:shadow-zinc-500 transition-all duration-300">
+                  Log out
+                </button>
+              </SignOutButton>
               <Link href="/dashboard">
                 <button className="bg-zinc-800 text-white px-6 py-3 font-bold rounded-full text-sm hover:shadow-lg hover:shadow-zinc-500 transition-all duration-300">
                   Dashboard
@@ -162,20 +173,28 @@ export default function Navbar() {
             <div className="border-t border-gray-200 pt-3 flex flex-col gap-2">
               <SignedOut>
                 <SignInButton forceRedirectUrl="/dashboard">
-                  <button className="bg-gray-200 px-4 py-2 rounded-lg font-medium text-sm w-full text-left hover:bg-gray-300 transition-colors">
+                  <button className="bg-gray-200 px-4 py-2 rounded-lg font-medium text-sm w-fit text-left hover:bg-gray-300 transition-colors">
                     Log in
                   </button>
                 </SignInButton>
 
                 <SignUpButton forceRedirectUrl="/dashboard">
-                  <button className="bg-gray-800 text-white px-4 py-2 font-bold rounded-full text-sm w-full text-left hover:bg-gray-900 transition-colors">
+                  <button className="bg-gray-800 text-white px-4 py-2 font-bold rounded-full text-sm w-fit text-left hover:bg-gray-900 transition-colors">
                     Sign up free
                   </button>
                 </SignUpButton>
               </SignedOut>
 
               <SignedIn>
-                <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                <SignOutButton>
+                  <button className="bg-red-600 text-white px-6 py-3 rounded-lg font-bold text-sm w-fit text-left hover:bg-red-500 transition-colors">
+                    Log out
+                  </button>
+                </SignOutButton>
+                <Link
+                  href="/dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <button className="bg-zinc-800 text-white px-4 py-2 font-bold rounded-full text-sm w-fit text-left hover:bg-zinc-900 transition-colors">
                     Dashboard
                   </button>
